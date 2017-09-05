@@ -50,13 +50,21 @@ class HashMap {
     for (let i = start; i < start + this._capacity; i++) {
       const index = i % this._capacity;
       const slot = this._slots[index];
+      console.log("slot does what: ", slot);
       if (slot === undefined || (slot.key === key && !slot.deleted)) {
         return index;
       } 
-      else if {
+      else if (slot.key === key) {
+        const newNode = {
+          key
+        };
+        this.head = newNode;
+        let node = this.head;
+        node = node.next;
+        //index, key, value={frodo, nextNode: value: {bilbo, node}
         //slot.key === key, start linked list
         // return the position where new value will be added
-        
+        return node;
       }
     }
   }
@@ -107,14 +115,14 @@ const hashNames = new HashMap();
 console.log(hashNames);
 hashNames.set("Hobbit", "Bilbo");
 hashNames.set("Hobbit", "Frodo");
-hashNames.set("Wizard", "Gandolf");
-hashNames.set("Human", "Aragon");
-hashNames.set("Elf", "Legolas");
-hashNames.set("Maiar", "The Necromancer");
-hashNames.set("Maiar", "Sauron");
-hashNames.set("RingBearer", "Gollum");
-hashNames.set("LadyOfLight", "Galadriel");
-hashNames.set("HalfElven", "Arwen");
-hashNames.set("ShepherdOfTheTrees", "Treebeard");
-// hashNames.remove('Hobbit');
+// hashNames.set("Wizard", "Gandolf");
+// hashNames.set("Human", "Aragon");
+// hashNames.set("Elf", "Legolas");
+// hashNames.set("Maiar", "The Necromancer");
+// hashNames.set("Maiar", "Sauron");
+// hashNames.set("RingBearer", "Gollum");
+// hashNames.set("LadyOfLight", "Galadriel");
+// hashNames.set("HalfElven", "Arwen");
+// hashNames.set("ShepherdOfTheTrees", "Treebeard");
+// // hashNames.remove('Hobbit');
 console.log(hashNames);
