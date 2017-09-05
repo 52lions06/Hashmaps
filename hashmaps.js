@@ -40,9 +40,7 @@ class HashMap {
     this.length--;
     this._deleted++;
   }
-//  The first is that each slot holds a linked list. 
-//  When you want to add a value, you hash the key, find the slot, 
-//  then add the pair to the start of the list. This is known as separate chaining. 
+
   _findSlot(key) {
     const hash = HashMap._hashString(key);
     const start = hash % this._capacity;
@@ -50,21 +48,8 @@ class HashMap {
     for (let i = start; i < start + this._capacity; i++) {
       const index = i % this._capacity;
       const slot = this._slots[index];
-      console.log("slot does what: ", slot);
-      if (slot === undefined || (slot.key === key && !slot.deleted)) {
+      if (slot === undefined || (slot.key == key && !slot.deleted)) {
         return index;
-      } 
-      else if (slot.key === key) {
-        const newNode = {
-          key
-        };
-        this.head = newNode;
-        let node = this.head;
-        node = node.next;
-        //index, key, value={frodo, nextNode: value: {bilbo, node}
-        //slot.key === key, start linked list
-        // return the position where new value will be added
-        return node;
       }
     }
   }
