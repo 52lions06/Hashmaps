@@ -27,8 +27,8 @@ class HashMap {
     this._slots[index] = {
       key,
       value,
-      deleted: false
-      // next: null 
+      deleted: false,
+      next: null 
     };
     this.length++;
   }
@@ -52,12 +52,16 @@ class HashMap {
 
     for (let i = start; i < start + this._capacity; i++) {
       const index = i % this._capacity;
-      const slot = this._slots[index][value];
-      console.log("slot does what: ", slot);
-      if (slot === undefined || (slot.key === key && !slot.deleted)) {
-        return index;
+      const slot = this._slots[index];
+      console.log('slot in findSlot', slot)
+  
+      if (slot === undefined) {
+        console.log('we got this far');
+        return slot;
       } 
-      else if (slot.key === key) {
+      else if (slot.key == key) {
+        console.log('but not here');
+
         console.log('this is the slot', slot);
         return slot;
       }
